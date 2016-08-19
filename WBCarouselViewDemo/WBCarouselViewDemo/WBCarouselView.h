@@ -32,6 +32,9 @@
 /** 轮播图滚动一次 返回的imageView是第几个ImageView */
 - (void)carouseView:(WBCarouselView *)carouseView DidEndScrollIndexOfImageView:(NSInteger)index;
 
+/** 轮播图多久滚动一次  默认是2秒 */
+- (NSTimeInterval)scollTimeOfCarouseView:(WBCarouselView *)carouseView;
+
 @end
 
 @interface WBCarouselView : UIView
@@ -39,10 +42,9 @@
 @property (nonatomic, weak) id<WBCarouselViewDelegate>delegate;
 @property (nonatomic, weak) id<WBCarouselViewDataSource>dataSource;
 
+/** 是否自动滚动 */
 @property (nonatomic, assign) BOOL autoScrollEnable;
 
-/** 取消定时循环  默认是定时蓄暖 */
-- (void)cancelCircle;
 
 - (void)reloadData;
 

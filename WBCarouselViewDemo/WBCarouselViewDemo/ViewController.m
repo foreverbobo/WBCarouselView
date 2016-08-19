@@ -29,7 +29,7 @@
     self.testView = testView;
     testView.delegate = self;
     testView.dataSource = self;
-//    [testView cancelCircle];
+    testView.autoScrollEnable = YES;
     
 }
 
@@ -48,6 +48,12 @@
     {
         imageView.backgroundColor = WBRandomColor;
     }
+}
+
+- (NSTimeInterval)scollTimeOfCarouseView:(WBCarouselView *)carouseView
+{
+    return 4;
+    
 }
 
 - (NSInteger)numberOfImageViewCountCarouseView:(WBCarouselView *)carouseView

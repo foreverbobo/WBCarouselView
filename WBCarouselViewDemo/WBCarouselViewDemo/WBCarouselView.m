@@ -90,10 +90,6 @@
     return _timer;
 }
 
-- (void)cancelCircle
-{
-    [self.timer invalidate];
-}
 
 - (void)reloadData
 {
@@ -335,7 +331,17 @@
 {
     if(!_timer)
     {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
+        NSTimeInterval time;
+        if([self.delegate respondsToSelector:@selector(scollTimeOfCarouseView:)])
+        {
+            time = [self.delegate scollTimeOfCarouseView:self];
+        }
+        else
+        {
+            time = 2;
+        }
+        
+        _timer = [NSTimer scheduledTimerWithTimeInterval:time target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_timer forMode:@"NSEventTrackingRunLoopMode"];
     }
     return _timer;
